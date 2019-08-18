@@ -61,4 +61,14 @@ public class AreaSettings
     public float blueMovementSpeed = 1f; // SlowMotion
     public float blueReproductionRate = 1f; // BlueMatingSeason
     public bool communism = false; // Communism
+
+    //Modifiers
+    [Header("Modifiers")]
+    public float globalReproductionRate = 1f; //Rabbits
+    public bool toTrees = false; //Trees
+    public bool giants = false; //Giants
+    public bool superSpeed = false; //speed
+    public bool wildlife = false; //WildLife
+    public bool fasterMutationRate = false; //MutationRate
+    public bool canSpawnColorChanger = false; //ColorChange
 }
