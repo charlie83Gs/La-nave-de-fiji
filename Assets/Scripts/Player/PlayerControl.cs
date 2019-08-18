@@ -5,33 +5,48 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
+    private Rigidbody rb;
+    private PlayerControls controls;
+	private Vector2 move;
+    private Vector2 rotate;
+    private float speed = 1f;
 
-    PlayerControls controls;
-	Vector2 move;
+    public string player;
+    
 
     private void Awake()
     {
         controls = new PlayerControls();
-        controls.PlayerOne.Move.performed += ctx => {
-            move = ctx.ReadValue<Vector2>();
-            Debug.Log(ctx);
-        };
-        controls.PlayerOne.Move.canceled += ctx => move = Vector2.zero;
+
+        controls.Player.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+        controls.Player.Move.canceled += ctx => move = Vector2.zero;
+
+        controls.Player.Aim.performed += ctx => rotate = ctx.ReadValue<Vector2>();
+
+        controls.Player.PickUpThrow.performed += ctx => Debug.Log(ctx);
+  
+    }
+   
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        Vector3 m = new Vector3(move.x, 0, move.y);
-        transform.Translate(m, Space.World);
+        Vector3 m = new Vector3(move.x * speed, rb.velocity.y, move.y * speed);
+        rb.velocity = m;
+        Vector3 r = new Vector3(rotate.x, 0, rotate.y);
+        transform.rotation = Quaternion.LookRotation(r);
     }
 
     private void OnEnable()
     {
-        controls.PlayerOne.Enable();
+        controls.Player.Enable();
     }
 
     private void OnDisable()
     {
-        controls.PlayerOne.Disable();
+        controls.Player.Disable();
     }
 }
