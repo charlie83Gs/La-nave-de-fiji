@@ -68,3 +68,9 @@ crashlytics-build.properties
 
 
 # End of https://www.gitignore.io/api/unity
+Assets/ML/BRAINS/PlayerControl.asset
+Assets/ML/BRAINS/PlayerControl.asset
+Assets/ML/BRAINS/PlayerControl.asset
+Assets/ML/SCRIPTS/FijiAgent.cs
+Assets/Scenes/Training.unity
+ProjectSettings/TagManager.asset
