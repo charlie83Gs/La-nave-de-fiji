@@ -1592,6 +1592,7 @@ MonoBehaviour:
   canPick: 0
   pickableItem: {fileID: 0}
   height: 2
+  thrust: 15
 --- !u!1 &4771465229127241201
 GameObject:
   m_ObjectHideFlags: 0
