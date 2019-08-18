@@ -4,7 +4,7 @@ public class AreaSettings
 {
     //General Settings
     [Header("General Settings")]
-    public float speedMultiplier = 1f;
+    public float speedMultiplier = 1.3f;
 
     //Black Rules
     [Header("Black Settings")]

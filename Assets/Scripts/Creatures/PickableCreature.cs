@@ -14,7 +14,7 @@ public class PickableCreature : MonoBehaviour
         }
     }
 
-    public void place()
+    public void letGo()
     {
         isPicked = false;
     }
