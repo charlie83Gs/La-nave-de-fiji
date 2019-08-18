@@ -21,6 +21,10 @@ public class AreaInfo : MonoBehaviour
         {
             player = Instantiate(Female, transform.position, Quaternion.identity);
         }
-        player.GetComponent<PlayerControl>().player = (PlayerID)playerNumber;
+    }
+
+    private void Start()
+    {
+        player.GetComponent<PlayerControl>().setPlayer(playerNumber);
     }
 }

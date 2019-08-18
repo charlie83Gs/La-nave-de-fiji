@@ -39,6 +39,11 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    public void setPlayer(int playerNum)
+    {
+        player = (PlayerID)playerNum;
+    }
+
 
 
 }
