@@ -11,6 +11,7 @@ public class CreaturePicker : MonoBehaviour
     private PlayerID player;
     private GameObject pickedItem;
     public float height;
+    public float thrust;
     void Start()
     {
         picker = gameObject.transform.Find("Picker").gameObject.GetComponent<SphereCollider>();
@@ -30,11 +31,21 @@ public class CreaturePicker : MonoBehaviour
                 pickedItem = pickableItem;
             } else if(pickedItem)
             {
-                pickedItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                pickedItem.GetComponent<PickableCreature>().isPicked = false;
-                pickedItem.transform.parent = this.transform.parent;
-                pickedItem = null;
+                letGO();
             }
         }
+        if(InputManager.GetButtonDown("Throw", player) && pickedItem)
+        {
+            pickedItem.GetComponent<Rigidbody>().AddForce(transform.forward * thrust, ForceMode.Impulse);
+            letGO();
+        }
+    }
+
+    private void letGO()
+    {
+        pickedItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        pickedItem.GetComponent<PickableCreature>().isPicked = false;
+        pickedItem.transform.parent = this.transform.parent;
+        pickedItem = null;
     }
 }
