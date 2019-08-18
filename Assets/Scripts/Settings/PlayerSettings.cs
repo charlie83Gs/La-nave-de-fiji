@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerSettings : MonoBehaviour
 {
+    public static IEnumerable<string> companyName;
+    public static object productName;
+
     // Start is called before the first frame update
     void Start()
     {
