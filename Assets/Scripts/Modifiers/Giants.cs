@@ -6,18 +6,6 @@ public class Giants : MonoBehaviour, IModifier
 {
     public void Apply()
     {
-        throw new System.NotImplementedException();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GlobalSettings.Instance.settings.giants = !GlobalSettings.Instance.settings.giants;
     }
 }

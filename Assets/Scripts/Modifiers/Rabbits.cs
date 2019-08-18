@@ -4,20 +4,9 @@ using UnityEngine;
 
 public class Rabbits : MonoBehaviour, IModifier
 {
+    private float multiplier = 0.1f;
     public void Apply()
     {
-        throw new System.NotImplementedException();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GlobalSettings.Instance.settings.globalReproductionRate += multiplier;
     }
 }
