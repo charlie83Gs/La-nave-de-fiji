@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 8074536569542381123}
   - component: {fileID: 8074536569542381120}
   - component: {fileID: 8074536569542381121}
+  - component: {fileID: 2503015809087543399}
   - component: {fileID: 8074536569542381181}
   m_Layer: 0
   m_Name: Training Area
@@ -473,6 +474,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2503015809087543399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8074536569542381126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df9db46521f42d4fa9e26adcc02daca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAreaMarginMultiplier: 1
+  foodPrefab: {fileID: 2006939998773392673, guid: f48f7f23613c07747a286eb0c0a47f8a,
+    type: 3}
+  foodGeneartion: 0.07
+  food: 0
+  areaBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!114 &8074536569542381181
 MonoBehaviour:
   m_ObjectHideFlags: 0

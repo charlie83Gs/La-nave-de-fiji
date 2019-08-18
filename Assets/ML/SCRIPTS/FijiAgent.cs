@@ -63,6 +63,7 @@ public class FijiAgent : Agent
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
+        Debug.Log("action");
 
         float actionRotation = 0;
         if (vectorAction[1] == 1) {
@@ -87,7 +88,7 @@ public class FijiAgent : Agent
         //agentRB.AddForce(moveVector*moveSpeed, ForceMode.VelocityChange);
         agentRB.velocity = moveVector * moveSpeed + new Vector3(0, agentRB.velocity.y, 0);
 
-        Debug.Log(moveVector);
+        //Debug.Log(moveVector);
 
         if (food < 0) {
             SetReward(-1f);
@@ -153,6 +154,7 @@ public class FijiAgent : Agent
         SetReward(0f);
         int rotation = Random.Range(0, 4);
         float rotationAngle = rotation * 90f;
+        food = 1;
         
         transform.position = GetRandomSpawnPos();
         Debug.Log("Agent Reset");
