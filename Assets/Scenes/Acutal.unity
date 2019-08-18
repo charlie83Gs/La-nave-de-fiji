@@ -895,9 +895,9 @@ MonoBehaviour:
         m_gamepadAxis: 7
         m_gamepadIndex: 3
   m_playerOneDefault: 8164c29ab6164012a23d1554266a3f02
-  m_playerTwoDefault: 
-  m_playerThreeDefault: 
-  m_playerFourDefault: 
+  m_playerTwoDefault: e0afd4e0cc6f4afd8ab3eb5062886ca6
+  m_playerThreeDefault: c9d5f23d0dd7451ebaf38b4a902f3d94
+  m_playerFourDefault: 8068e52178e74336af7b5ca738d10fba
   m_ignoreTimescale: 1
   m_runScanningInLateUpdate: 0
 --- !u!4 &2034762229
@@ -1064,7 +1064,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092884974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.14859414, y: 0.65, z: 2.05}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
