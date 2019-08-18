@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour
         float ver = InputManager.GetAxis("VerticalMove", player);
         if (0 != hor  || 0 != ver)
         {
-            rb.MovePosition(transform.position + new Vector3(hor, 0, -ver) * Time.deltaTime);
+            rb.MovePosition(transform.position + new Vector3(hor, 0, -ver) * speed * Time.deltaTime);
         }
 
         float aimHor = InputManager.GetAxis("HorizontalAim", player);
