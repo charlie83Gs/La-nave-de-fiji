@@ -18,7 +18,7 @@ public class PlayerControl : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        speed *= settings.settings.speedMultiplier;
+        speed *= settings.GetSettings().speedMultiplier;
     }
 
     private void Update()
