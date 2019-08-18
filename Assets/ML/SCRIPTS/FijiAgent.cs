@@ -16,7 +16,7 @@ public class FijiAgent : Agent
     private ResetParameters resetParams;
     public float food =1;
     RayPerception rayPer;
-    float[] rayAngles = { 245f, 270f, 295f };
+    float[] rayAngles = { 255f, 270f, 285f };
     string[] detectableObjects = { "food", "Player", "wall", "creature" };
     public float visionDistance = 12f;
 
@@ -91,7 +91,7 @@ public class FijiAgent : Agent
         //Debug.Log(moveVector);
 
         if (food < 0) {
-            SetReward(-1f);
+            SetReward(-5f);
             Done();
         }
         if (food > 4) {
@@ -131,10 +131,10 @@ public class FijiAgent : Agent
        float randomPosZ = Random.Range(-academy.areaBounds.extents.z * academy.spawnAreaMarginMultiplier,
                                             academy.areaBounds.extents.z * academy.spawnAreaMarginMultiplier);
        randomSpawnPos =  academy.gameObject.transform.position + new Vector3(randomPosX, 1f, randomPosZ);
-       /*if (Physics.CheckBox(randomSpawnPos, new Vector3(2.5f, 0.01f, 2.5f)) == false)
+       if (Physics.CheckBox(randomSpawnPos, new Vector3(2.5f, 0.01f, 2.5f)) == false)
        {
             foundNewSpawnLocation = true;
-       }*/
+       }
         
         return randomSpawnPos;
     }
@@ -157,7 +157,7 @@ public class FijiAgent : Agent
         food = 1;
         
         transform.position = GetRandomSpawnPos();
-        Debug.Log("Agent Reset");
+        //Debug.Log("Agent Reset");
         /*agentRB.velocity = Vector3.zero;
         agentRB.angularVelocity = Vector3.zero;*/
 
@@ -169,6 +169,11 @@ public class FijiAgent : Agent
     public void feed(float foodConsumed) {
         AddReward(1f);
         food += foodConsumed;
+    }
+
+    public void punish() {
+        SetReward(-2f);
+
     }
     /*
     //get ungry over time
