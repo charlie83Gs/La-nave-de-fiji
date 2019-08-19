@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8685305964318785979}
   - component: {fileID: 4740072777902990540}
   - component: {fileID: 7802764893351833343}
+  - component: {fileID: 3609206423363277565}
   m_Layer: 0
   m_Name: Area
   m_TagString: floor
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 3569424803152792433}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.00999999, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 2.07, z: 31.48}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -118,7 +119,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3569424803152792433}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 0.05, z: 10}
@@ -136,6 +137,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAreaMarginMultiplier: 1
-  creaturePrefab: {fileID: 7192889576897466536, guid: 4ebcd207a1500414aadd6241bc8b3266,
-    type: 3}
+  creatures:
+  - {fileID: 1656586833599691105, guid: 2fae795c5d0784046a78664feaceb2a2, type: 3}
+  - {fileID: 483950678520495297, guid: a2ba98e338e4fe5439be0fa324eb15ee, type: 3}
+  - {fileID: 4033217346566363376, guid: c40b3cbb0281d6b45b62839bd14906e3, type: 3}
+  - {fileID: 128951248760352196, guid: 664e14ed846a8534aaaed8aef8c5a707, type: 3}
+  - {fileID: 3788617849663049096, guid: 2515dcdf4a483d04e87b7dd394b5a35b, type: 3}
   creaturesToSpawn: 5
+  timeBetweenSpanws: 5
+--- !u!114 &3609206423363277565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569424803152792433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df9db46521f42d4fa9e26adcc02daca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAreaMarginMultiplier: 1
+  foodPrefab: {fileID: 2006939998773392673, guid: f48f7f23613c07747a286eb0c0a47f8a,
+    type: 3}
+  foodGeneartion: 0.07
+  food: 0
+  areaBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}

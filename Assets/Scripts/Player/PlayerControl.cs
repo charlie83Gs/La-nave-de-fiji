@@ -11,14 +11,9 @@ public class PlayerControl : MonoBehaviour
     public float speed = 1.5f;
     public PlayerID player;
 
-    private void Awake()
-    {
-        settings = GlobalSettings.Instance;
-    }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        speed *= settings.GetSettings().speedMultiplier;
     }
 
     private void Update()

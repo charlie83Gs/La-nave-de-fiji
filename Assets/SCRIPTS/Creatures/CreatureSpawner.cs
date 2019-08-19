@@ -6,11 +6,18 @@ public class CreatureSpawner : MonoBehaviour
 {
     public float spawnAreaMarginMultiplier = 1;
     private Bounds areaBounds;
-    public GameObject creaturePrefab;
+    public GameObject[] creatures;
+
     public int creaturesToSpawn = 5;
+    public int timeBetweenSpanws = 5;
+    private float timer;
+    private AreaInfo info;
+
     private void Start()
     {
         areaBounds = GetComponent<BoxCollider>().bounds;
+        timer = timeBetweenSpanws;
+        info = GetComponent<AreaInfo>();
     }
 
     private void FixedUpdate()
@@ -18,9 +25,25 @@ public class CreatureSpawner : MonoBehaviour
         if (creaturesToSpawn > 0)
         {
             creaturesToSpawn--;
-            Instantiate(creaturePrefab, GetRandomSpawnPos(), Quaternion.identity);
+            int r = Random.Range(0, creatures.Length);
+            Instantiate(creatures[r], GetRandomSpawnPos(), Quaternion.identity);
+        }
+
+    }
+
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer < 0 && info.creatures.Capacity > 0)
+        {
+            int r = Random.Range(0, info.creatures.Capacity);
+            GameObject newCreature = Instantiate(info.creatures[r],GetRandomSpawnPos(), Quaternion.identity);
+            newCreature.GetComponent<CreaturePlayAgent>().food = 1;
+            timer = timeBetweenSpanws;
+            info.hasSwpawned = true;
         }
     }
+
     private Vector3 GetRandomSpawnPos()
     {
         bool foundNewSpawnLocation = false;

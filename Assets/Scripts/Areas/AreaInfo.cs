@@ -1,48 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Luminosity.IO;
+using System.Linq;
 
 public class AreaInfo : MonoBehaviour
 {
-    public int playerNumber;
-    public GameObject Male;
-    public GameObject Female;
-    private GameObject player;
-    [SerializeField]
-    private List<GameObject> creatures = new List<GameObject>();
-    private void Awake()
+  public int playerNumber;
+  public GameObject Male;
+  public GameObject Female;
+    public bool hasSwpawned = false;
+  private GameObject player;
+  public List<GameObject> creatures = new List<GameObject>();
+  private void Awake()
+  {
+    bool isMale = (Random.value > 0.5f);
+    if (isMale)
     {
-        bool isMale = (Random.value > 0.5f);
-        if (isMale)
-        {
-            player = Instantiate(Male, transform.position, Quaternion.identity);
+      player = Instantiate(Male, transform.position, Quaternion.identity);
 
-        } else
-        {
-            player = Instantiate(Female, transform.position, Quaternion.identity);
-        }
     }
-
-    private void Start()
+    else
     {
-        player.GetComponent<PlayerControl>().setPlayer(playerNumber);
+      player = Instantiate(Female, transform.position, Quaternion.identity);
     }
+  }
 
-    public void addCreature(GameObject pCreature)
+  private void Start()
+  {
+    player.GetComponent<PlayerControl>().setPlayer(playerNumber);
+  }
+
+  private void LateUpdate()
+  {
+    if (!creatures.Any() && hasSwpawned)
     {
-        creatures.Add(pCreature);
+            Debug.Log(creatures.Any());
+      Destroy(gameObject);
     }
+  }
 
-    public void removeCreature(GameObject pCreature)
-    {
-        creatures.Remove(pCreature);
-    }
+  public void addCreature(GameObject pCreature)
+  {
+    creatures.Add(pCreature);
+  }
 
-    public bool hasCreature(GameObject pCreature)
-    {
-        return creatures.Contains(pCreature);
-    }
+  public void removeCreature(GameObject pCreature)
+  {
+    creatures.Remove(pCreature);
+  }
 
-    
+  public bool hasCreature(GameObject pCreature)
+  {
+    return creatures.Contains(pCreature);
+  }
+
+
+
 }

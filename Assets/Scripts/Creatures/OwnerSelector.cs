@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class OwnerSelector : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "floor" && !collision.gameObject.GetComponent<AreaInfo>().hasCreature(gameObject))
+        if (other.gameObject.tag == "floor" && !other.gameObject.GetComponent<AreaInfo>().hasCreature(gameObject))
         {
-            collision.gameObject.GetComponent<AreaInfo>().addCreature(gameObject);
+            other.gameObject.GetComponent<AreaInfo>().addCreature(gameObject);
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if(collision.gameObject.tag == "floor")
+        if (other.gameObject.tag == "floor")
         {
-            collision.gameObject.GetComponent<AreaInfo>().removeCreature(gameObject);
+            other.gameObject.GetComponent<AreaInfo>().removeCreature(gameObject);
         }
     }
+
 }

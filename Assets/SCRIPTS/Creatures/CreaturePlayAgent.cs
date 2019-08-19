@@ -43,12 +43,11 @@ public class CreaturePlayAgent : Agent
 
     public override void CollectObservations()
     {
-        if (useVectorObs)
-        {
-            AddVectorObs(agentRB.velocity);
-            AddVectorObs(rayPer.Perceive(visionDistance, rayAngles, detectableObjects, 0.3f, 0f));
-            //AddVectorObs(rayPer.Perceive(visionDistance, rayAngles, detectableObjects, 0.9f, 0f));
-        }
+      
+        //AddVectorObs(agentRB.velocity);
+        AddVectorObs(rayPer.Perceive(visionDistance, rayAngles, detectableObjects, 0f, 0f));
+        //AddVectorObs(rayPer.Perceive(visionDistance, rayAngles, detectableObjects, 0.9f, 0f));
+        
         //AddVectorObs(gameObject.transform.rotation.x);
         //AddVectorObs(ball.transform.position - gameObject.transform.position);
         //AddVectorObs(ballRb.velocity);
@@ -71,25 +70,30 @@ public class CreaturePlayAgent : Agent
         //APpLY ROTATION
         Vector3 rotateVector = transform.up * actionRotation;
         agentRB.MoveRotation(Quaternion.Euler(agentRB.rotation.eulerAngles + rotateVector * rotateSpeed));
-        Debug.Log(rotateVector);
+        //Debug.Log(rotateVector);
         float actionMotion = 0;
         if (vectorAction[0] == 1)
         {
+            //Debug.Log("moving!!");
             actionMotion -= moveSpeed;
         }
         else if (vectorAction[0] == 2)
         {
+            //Debug.Log("moving!!");
             actionMotion = moveSpeed;
         }
 
         //APPLY MOTION
-        Vector3 moveVector = transform.forward * actionMotion;
+
+        Vector3 moveVector = transform.forward * actionMotion ;
+        //Debug.Log(moveVector);
         agentRB.AddForce(moveVector, ForceMode.Acceleration);
+        //agentRB.MovePosition(transform.position + moveVector);
         //Debug.Log(moveVector);
 
         if (stepts % 5 == 0)
         {
-            food -= 0.0003f * moveSpeed ;
+            food -= 0.0001f * moveSpeed ;
         }
 
         if (food < 0)

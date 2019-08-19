@@ -34,7 +34,7 @@ public class GlobalSettings
             }
             else
             {
-                Debug.Log("Instance was already created");
+                //Debug.Log("Instance was already created");
             }
 
             return instance;

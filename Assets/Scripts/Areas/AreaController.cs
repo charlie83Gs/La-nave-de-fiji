@@ -6,7 +6,7 @@ public class AreaController : MonoBehaviour
 {
     public int PlayerAmount;
     public GameObject PlayerArea;
-    private float[] AreaPos = {25f, 25f};
+    private float[] AreaPos = {15f, 15f};
     private int[][] Area = new int[][]
     {
         new int[]{1, 1}, 
