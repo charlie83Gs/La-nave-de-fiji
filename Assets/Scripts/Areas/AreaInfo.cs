@@ -8,8 +8,10 @@ public class AreaInfo : MonoBehaviour
     public int playerNumber;
     public GameObject Male;
     public GameObject Female;
-    [SerializeField]
     private GameObject player;
+
+    private List<GameObject> creatures = new List<GameObject>();
+    public int startingCreatures = 5;
     private void Awake()
     {
         bool isMale = (Random.value > 0.5f);
@@ -26,5 +28,10 @@ public class AreaInfo : MonoBehaviour
     private void Start()
     {
         player.GetComponent<PlayerControl>().setPlayer(playerNumber);
+    }
+
+    public void addCreature(GameObject pCreature)
+    {
+        creatures.Add(pCreature);
     }
 }
