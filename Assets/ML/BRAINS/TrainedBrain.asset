@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b23992c8eb17439887f5e944bf04a40, type: 3}
-  m_Name: SimpleBrain
+  m_Name: TrainedBrain
   m_EditorClassIdentifier: 
   brainParameters:
     vectorObservationSize: 30
@@ -21,5 +21,5 @@ MonoBehaviour:
     - Move
     - Turn
     vectorActionSpaceType: 0
-  model: {fileID: 5022602860645237092, guid: 423b74514e80d46469cd9d0569227f74, type: 3}
+  model: {fileID: 5022602860645237092, guid: 107277146f760fc46ab83047ee2f8b9b, type: 3}
   inferenceDevice: 0

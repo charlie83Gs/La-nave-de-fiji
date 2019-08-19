@@ -16,7 +16,7 @@ public class FijiAgent : Agent
     private ResetParameters resetParams;
     public float food =1;
     RayPerception rayPer;
-    float[] rayAngles = { 255f, 270f, 285f };
+    float[] rayAngles = { 235, 255f, 270f, 285f, 305f };
     string[] detectableObjects = { "food", "Player", "wall", "creature" };
     public float visionDistance = 12f;
 
@@ -54,7 +54,7 @@ public class FijiAgent : Agent
         if (useVectorObs)
         {
             AddVectorObs(rayPer.Perceive(visionDistance, rayAngles, detectableObjects, 0f, 0f));
-            AddVectorObs(rayPer.Perceive(visionDistance, rayAngles, detectableObjects, 1.5f, 0f));
+            //AddVectorObs(rayPer.Perceive(visionDistance, rayAngles, detectableObjects, 1.5f, 0f));
         }
         //AddVectorObs(gameObject.transform.rotation.x);
         //AddVectorObs(ball.transform.position - gameObject.transform.position);
@@ -63,7 +63,7 @@ public class FijiAgent : Agent
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
-        Debug.Log("action");
+        //Debug.Log("action");
 
         float actionRotation = 0;
         if (vectorAction[1] == 1) {
@@ -79,22 +79,22 @@ public class FijiAgent : Agent
         float actionMotion = 0;
         if (vectorAction[0] == 1) {
             actionMotion -= moveSpeed;
+            AddReward(0.001f);
         } else if (vectorAction[0] == 2) {
+            AddReward(0.001f);
             actionMotion = moveSpeed;
         }
 
         //APPLY MOTION
-        Vector3 moveVector = transform.forward * actionMotion;
-        //agentRB.AddForce(moveVector*moveSpeed, ForceMode.VelocityChange);
-        agentRB.velocity = moveVector * moveSpeed + new Vector3(0, agentRB.velocity.y, 0);
 
-        //Debug.Log(moveVector);
+        Vector3 moveVector = transform.forward * actionMotion;
+        agentRB.AddForce(moveVector, ForceMode.Acceleration);
 
         if (food < 0) {
             SetReward(-5f);
             Done();
         }
-        if (food > 4) {
+        if (food > 10) {
             SetReward(5f);
             Done();
         }
@@ -102,6 +102,7 @@ public class FijiAgent : Agent
         if (GetCumulativeReward() < -5f) {
             Done();
         }
+
 
         /*if (true){
             Done();
@@ -112,11 +113,11 @@ public class FijiAgent : Agent
             SetReward(0.1f);
         }*/
         if (stepts % 5 == 0) {
-            food -= moveSpeed / 50;
+            food -= moveSpeed / 800;
         }
 
         //Debug.Log(agentParameters.maxStep);
-        AddReward(-1f / 1000);
+        AddReward(-1f / 2000);
         stepts++;
     }
 
@@ -173,7 +174,6 @@ public class FijiAgent : Agent
 
     public void punish() {
         SetReward(-2f);
-
     }
     /*
     //get ungry over time

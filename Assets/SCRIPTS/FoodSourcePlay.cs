@@ -2,29 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class FoodSource : MonoBehaviour
+public class FoodSourcePlay : MonoBehaviour
 {
     public float nutritionalValue = 1;
     public string cosumerTag = "creature";
-    public float maxSteps = 2000;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == cosumerTag) {
+        //Debug.Log("Food");
+        //Debug.Log("food is being tocuhed!! " + collision.gameObject.tag + "/" + cosumerTag +(collision.gameObject.tag==co));
+        if (collision.gameObject.tag == cosumerTag)
+        {
             GameObject creature = collision.gameObject;
-            FijiAgent agent = creature.GetComponent<FijiAgent>();
+            CreaturePlayAgent agent = creature.GetComponent<CreaturePlayAgent>();
             agent.feed(nutritionalValue);
             nutritionalValue = 0;
             Destroy(gameObject);
         }
-    }
 
-    private void FixedUpdate()
-    {
-        maxSteps--;
-        if (maxSteps < 0) {
-            Destroy(this.gameObject);
-        }
     }
 }

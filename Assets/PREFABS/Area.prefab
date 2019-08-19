@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 3569424803152792437}
   - component: {fileID: 8685305964318785979}
   - component: {fileID: 4740072777902990540}
+  - component: {fileID: 7802764893351833343}
   m_Layer: 0
   m_Name: Area
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +109,7 @@ MonoBehaviour:
   playerNumber: 0
   Male: {fileID: 4714498846048546152, guid: 0863ca238f545e14db836a5bc2849227, type: 3}
   Female: {fileID: 8184263365914087054, guid: 4f3ab72fcda481d4bba4674c7a2b0792, type: 3}
-  startingCreatures: 5
+  creatures: []
 --- !u!65 &4740072777902990540
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -122,3 +123,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 0.05, z: 10}
   m_Center: {x: 0, y: 1.110223e-16, z: 0}
+--- !u!114 &7802764893351833343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569424803152792433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12df6ded539bba043a1b3379604c63a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAreaMarginMultiplier: 1
+  creaturePrefab: {fileID: 7192889576897466536, guid: 4ebcd207a1500414aadd6241bc8b3266,
+    type: 3}
+  creaturesToSpawn: 5

@@ -43,7 +43,7 @@ public class CreaturePicker : MonoBehaviour
 
     private void letGO()
     {
-        pickedItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        pickedItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         pickedItem.GetComponent<PickableCreature>().isPicked = false;
         pickedItem.transform.parent = this.transform.parent;
         pickedItem = null;

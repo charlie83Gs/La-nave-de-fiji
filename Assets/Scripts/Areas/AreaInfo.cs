@@ -9,16 +9,15 @@ public class AreaInfo : MonoBehaviour
     public GameObject Male;
     public GameObject Female;
     private GameObject player;
-
+    [SerializeField]
     private List<GameObject> creatures = new List<GameObject>();
-    public int startingCreatures = 5;
     private void Awake()
     {
         bool isMale = (Random.value > 0.5f);
-        if(isMale)
+        if (isMale)
         {
             player = Instantiate(Male, transform.position, Quaternion.identity);
-            
+
         } else
         {
             player = Instantiate(Female, transform.position, Quaternion.identity);
@@ -34,4 +33,16 @@ public class AreaInfo : MonoBehaviour
     {
         creatures.Add(pCreature);
     }
+
+    public void removeCreature(GameObject pCreature)
+    {
+        creatures.Remove(pCreature);
+    }
+
+    public bool hasCreature(GameObject pCreature)
+    {
+        return creatures.Contains(pCreature);
+    }
+
+    
 }

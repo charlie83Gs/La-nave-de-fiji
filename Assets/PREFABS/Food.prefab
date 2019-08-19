@@ -107,3 +107,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nutritionalValue: 1
   cosumerTag: creature
+  maxSteps: 1500

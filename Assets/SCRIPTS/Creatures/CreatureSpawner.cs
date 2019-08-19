@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodSpawner : MonoBehaviour
+public class CreatureSpawner : MonoBehaviour
 {
-
-
-
     public float spawnAreaMarginMultiplier = 1;
-    public GameObject foodPrefab;
-    public float foodGeneartion;
-    public float food = 0;
-    public Bounds areaBounds;
-
+    private Bounds areaBounds;
+    public GameObject creaturePrefab;
+    public int creaturesToSpawn = 5;
     private void Start()
     {
         areaBounds = GetComponent<BoxCollider>().bounds;
@@ -20,16 +15,13 @@ public class FoodSpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        food += foodGeneartion;
-
-        if (food > 1)
+        if (creaturesToSpawn > 0)
         {
-            Instantiate(foodPrefab, GetRandomSpawnPos(), Quaternion.identity);
-            food -= 1;
+            creaturesToSpawn--;
+            Instantiate(creaturePrefab, GetRandomSpawnPos(), Quaternion.identity);
         }
     }
-
-    public Vector3 GetRandomSpawnPos()
+    private Vector3 GetRandomSpawnPos()
     {
         bool foundNewSpawnLocation = false;
         Vector3 randomSpawnPos = Vector3.zero;
@@ -42,5 +34,4 @@ public class FoodSpawner : MonoBehaviour
         randomSpawnPos = transform.position + new Vector3(randomPosX, 1f, randomPosZ);
         return randomSpawnPos;
     }
-
 }
